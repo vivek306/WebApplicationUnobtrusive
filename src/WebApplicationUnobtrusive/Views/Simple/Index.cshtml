@@ -1,0 +1,18 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@model WebApplicationUnobtrusive.Models.SimpleModel
+<p id="loadingText">
+    Loading
+</p>
+<form asp-ajax="true"
+         asp-onsuccess="DateTimeUpdated"
+         asp-loading-id="loadingText"
+         asp-update-id="dateTime"
+         asp-method="post"
+         asp-action="UpdateTime" asp-controller="Simple">
+    <div id="dateTime">
+        @{ await Html.RenderPartialAsync("Partials/_SimpleDateTime.cshtml", Model); }
+    </div>
+    <button type="submit">Update</button>
+</form>
